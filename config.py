@@ -3,23 +3,23 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or ")\xe8\x0b\x03\x90\x8e\xf95\x87\xef\xf0m\x10\xactD"
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
-    BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') or 'cmsportalstorageaccount'
-    BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') or 'U0QtD+QoRUiCFhR+nGP5RhVwIPlbbe5caSPkSMQqkkj6HxSO0HXphLH375FzmRt8nQbsCboSe+fH+AStE4J29g=='
-    BLOB_CONTAINER = os.environ.get('BLOB_CONTAINER') or 'images'
+    BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT')
+    BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY')
+    BLOB_CONTAINER = os.environ.get('BLOB_CONTAINER')
 
-    SQL_SERVER = os.environ.get('SQL_SERVER') or 'cms-udacity.database.windows.net'
-    SQL_DATABASE = os.environ.get('SQL_DATABASE') or 'cmsadmin-db'
-    SQL_USER_NAME = os.environ.get('SQL_USER_NAME') or 'cmsadmin'
-    SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or 'Abcde1234567890'
+    SQL_SERVER = os.environ.get('SQL_SERVER')
+    SQL_DATABASE = os.environ.get('SQL_DATABASE')
+    SQL_USER_NAME = os.environ.get('SQL_USER_NAME')
+    SQL_PASSWORD = os.environ.get('SQL_PASSWORD')
     # Below URI may need some adjustments for driver version, based on your OS, if running locally
     SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_USER_NAME + '@' + SQL_SERVER + ':' + SQL_PASSWORD + '@' + SQL_SERVER + ':1433/' + SQL_DATABASE  + '?driver=ODBC+Driver+17+for+SQL+Server'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     ### Info for MS Authentication ###
     ### As adapted from: https://github.com/Azure-Samples/ms-identity-python-webapp ###
-    CLIENT_SECRET = "ENTER_CLIENT_SECRET_HERE"
+    CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
     # In your production app, Microsoft recommends you to use other ways to store your secret,
     # such as KeyVault, or environment variable as described in Flask's documentation here:
     # https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
@@ -30,7 +30,7 @@ class Config(object):
     AUTHORITY = "https://login.microsoftonline.com/common"  # For multi-tenant app, else put tenant name
     # AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 
-    CLIENT_ID = "ENTER_CLIENT_ID_HERE"
+    CLIENT_ID = os.environ.get('CLIENT_ID')
 
     REDIRECT_PATH = "/getAToken"  # Used to form an absolute URL; must match to app's redirect_uri set in AAD
 
