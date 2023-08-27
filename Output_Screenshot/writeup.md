@@ -1,4 +1,4 @@
-# Write-up Template
+# Write-up 
 
 ### Analyze, choose, and justify the appropriate resource option for deploying the app.
 
@@ -9,23 +9,49 @@
 
 *I opted for the web app service over a virtual machine for several reasons:*
 
-- *Cost-Effectiveness: Web app services are more cost-effective than virtual machines.*
-- *Maintenance and Setup: Web apps eliminate the labor-intensive maintenance and intricate processes of VM setup, which demands comprehensive security configurations.*
-- *Deployment Efficiency: Web apps not only offer a more user-friendly development experience but their integration with platforms, such as GitHub, greatly streamlines the deployment process.*
-- *Reliability & Availability: While web apps and VMs might seem comparable in availability, VMs have the potential to compromise reliability due to additional user configurations and associated risks. With VMs requiring occasional restarts and OS maintenance, a web app is likely to offer better uptime.*
-- *Scalability: The web app aligns perfectly with my current needs and allows for easy future scaling, saving both money and time compared to a VM.*
+*1. Cost Analysis:*
+- *Virtual Machine (VM): Deploying the CMS app on a VM might incur costs based on the VM size, storage, and network usage. VMs also require regular maintenance, which can add to the operational costs.*
+- *App Service: App Service is a PaaS (Platform as a Service) solution, which means the underlying infrastructure is managed by the cloud provider. This can lead to cost savings as there's no need to manage VMs, but the pricing might be based on the number of requests, data transfer, and additional services used.*
 
-*Conclusion: Taking into account factors like cost, scalability, reliability, and workflow efficiency, the web app service emerged as the optimal choice for my project's specifications.*
+*2.Scalability:*
+- *VM: Scalability in VMs requires manual configuration. While it's possible to scale out by adding more VMs, it requires additional setup and configuration.*
+- *App Service: App Service offers automatic scaling based on the load. This means the app can handle sudden traffic spikes without manual intervention.*
+
+*3. Availability:*
+- *VM: Ensuring high availability with VMs requires setting up multiple instances and configuring load balancers. This can be complex and time-consuming.*
+- *App Service: App Service provides built-in high availability. The platform ensures that the app is always available, even during updates or failures.*
+
+*4. Workflow:*
+- *VM: Deploying apps on VMs can be cumbersome as it requires setting up the environment, managing dependencies, and ensuring security.*
+- *App Service: App Service offers a streamlined workflow with integrated CI/CD (Continuous Integration/Continuous Deployment) capabilities. This makes deploying and updating the app much simpler.*
+
+*Conclusion: Considering the factors above, deploying the CMS app using App Service seems to be the most suitable option. The primary reasons for this decision are the automatic scalability, built-in high availability, and streamlined workflow that App Service offers. While VMs provide more control over the environment, the added complexity and operational overhead make App Service a more efficient and cost-effective solution for this specific use case.*
 
 ### Assess app changes that would change your decision.
 
 *Detail how the app and any other needs would have to change for you to change your decision in the last section.* 
 
-* I might contemplate using a virtual machine if it offered:*
-- *More straightforward, "plug-and-play" templates for web app services.*
-- *Seamless integration for continuous deployment.*
+* While the App Service was deemed the most suitable option for deploying the CMS app in the previous analysis, certain changes to the app or its requirements could lead to a reconsideration of this decision. Here's a detailed breakdown:*
 
-*This stands in contrast to the PAS web app services on Azure, which provide:*
-- *eamless integration of changes and deployments from sources like GitHub.*
+1. Increased Control Over Infrastructure:
+- *App Changes: If the app requires specific hardware configurations, custom OS modifications, or unique networking setups, a VM would be more appropriate.*
+- *nfluence on Decision: VMs provide granular control over the infrastructure, allowing for custom configurations that might not be possible with App Service.*
 
-Given the effort involved in setting up a virtual machine — ensuring its security and keeping it current — I don't foresee a change in this perspective in the near future.
+2. Complex Software Dependencies:
+- "App Changes: The introduction of intricate software dependencies, which might not be supported by App Service, would necessitate a VM deployment."
+- "Influence on Decision: VMs offer the flexibility to install and manage any software, ensuring compatibility with complex dependencies."
+
+3. Tighter Security Requirements:
+- *pp Changes: If the app processes highly sensitive data and requires advanced security measures, such as isolated networks or specific security tools, a VM might be more suitable.*
+- *Influence on Decision: VMs can be configured to operate in isolated environments, providing enhanced security controls.*
+
+4. Cost Constraints:
+- *App Changes: If the app's usage pattern becomes highly unpredictable with sporadic high-traffic spikes, the cost of running it on App Service might become prohibitive.*
+- *Influence on Decision: VMs, when optimized correctly, can sometimes be more cost-effective for apps with unpredictable usage patterns.*
+
+5. Need for Multi-Region Deployment:
+- *App Changes: If there's a requirement to deploy the app in multiple regions for redundancy or to serve a global audience, VMs might offer more flexibility.*
+- *Influence on Decision: While App Service does support multi-region deployment, VMs can provide more control over data replication and traffic routing.*
+
+Conclusion:
+While the App Service remains a robust and efficient solution for many app deployment scenarios, specific changes in app requirements or constraints can tilt the balance in favor of VMs. It's crucial to continually assess the app's needs and the available deployment options to ensure optimal performance, security, and cost-effectiveness.
